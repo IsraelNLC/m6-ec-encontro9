@@ -1,11 +1,10 @@
+# Servidor FasApi com Supabase
 import fastapi
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, File, UploadFile, Request, Body
 from fastapi.responses import FileResponse, StreamingResponse
 import os
 from supabase import create_client, Client
-import asyncio
-import aiofiles
 import time
 list_files = os.listdir("../received")
 
