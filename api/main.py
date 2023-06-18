@@ -22,17 +22,9 @@ async def list():
     res = supabase.storage.from_(bucket_name).list()
     print(res)
 
-@app.post("/upload")
-def upload(content: UploadFile = fastapi.File(...)):
-    with open(f"../received/siu{time.time()}.png", 'wb') as f:
-        dados = content.file.read()
-        f.write(dados)
-        #pass
-    return {"status": "ok"}
-
 @app.post("/images")
 def images():
-    # Rota da imagem local para ser feito o upload (no meu caso esta na pasta mock e é a imagem "lala.png")
+    # Rota da imagem local para ser feito o upload
     for arquivo in list_files:
         with open(os.path.join("../received", arquivo), 'rb+') as f:
             dados = f.read()
